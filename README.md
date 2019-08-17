@@ -1,5 +1,5 @@
 # Binary-Tree-Traversal
-inOrder-preOrder-postOrder Travesal
+inOrder-preOrder-postOrder Travesal by Recursive Functions
 
 **Node Class:** defining a node of tree.
 
