@@ -1,4 +1,4 @@
-# Binary Tree Traversal in Java - Recursive
+# Binary Tree Traversal Algorithm in Java with Recursion
 inOrder-preOrder-postOrder Travesal by Recursive Functions
 
 **Node Class:** defining a node of tree.
