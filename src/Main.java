@@ -2,7 +2,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        Tree T1 = new Tree();
+        BinarySearchTree T1 = new BinarySearchTree();
         Node r = new Node(49);
         T1.addNode(r);
         T1.addNode(new Node(50));
@@ -18,7 +18,7 @@ public class Main {
         T1.getMaxValue();
         T1.getMinValue();
 
-        Tree T2 = new Tree();
+        BinarySearchTree T2 = new BinarySearchTree();
         T2.addNode(new Node(10));
         T2.addNode(new Node(8));
         T2.addNode(new Node(25));
@@ -33,7 +33,15 @@ public class Main {
         T2.levelOrderPrint();
         T2.getMaxValue();
         T2.getMinValue();
-        System.out.println("\n"+Tree.isEqual(T1.root,T2.root));
+        System.out.println("\n"+ BinarySearchTree.isEqual(T1.root,T2.root));
+        T2.inOrderPrint();
+        T2.deleteNode(T2.root,8);
+        T2.inOrderPrint();
+        T2.addNode(new Node(8));
+        T2.inOrderPrint();
+        T2.deleteNode(T2.root,10);
+        T2.inOrderPrint();
+
 
     }
 }
