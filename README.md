@@ -1,5 +1,4 @@
 # Binary Tree and Binary Search Tree Traversal Algorithm in Java with Recursion
-In Order, Pre Order, Post Order and Level Order Travesal by Recursive Functions
 
 **Node Class:** defining a node of tree.
 
@@ -9,3 +8,15 @@ In Order, Pre Order, Post Order and Level Order Travesal by Recursive Functions
 
 **Main Class:** define tree and nodes and call traverse functions for the tree.
 
+#### Functions
+* In Order Traverse
+* Pre Order Traverse
+* Post Order Traverse
+* Level Order Traverse
+* Insert Node
+* Delete Node
+* Find Lowest Common Ancestor
+* Max Value
+* Min Value
+* Compare Two Tree
+* Check is BST
