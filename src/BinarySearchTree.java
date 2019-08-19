@@ -3,46 +3,41 @@
 class BinarySearchTree extends BinaryTree{
 
 
-    @Override
-    protected void insertNode(Node root, Node node) {
-        if (root == null) {
-            this.root = node;
-        } else {
-            if (node.value <= root.value) {
-                if (root.left == null)
-                    root.left = node;
-                else
-                    insertNode(root.left, node);
-            } else if (node.value > root.value) {
-                if (root.right == null)
-                    root.right = node;
-                else
-                    insertNode(root.right, node);
-            }
-        }
+    BinarySearchTree(Node root) {
+        super(root);
     }
 
-    @Override
-    int findLCA(Node root, Node node1, Node node2){ //Lowest common ancestor
-        if (root==null) return -1;
-        else if(node1.value == root.value || node2.value == root.value)
+
+    int lowestCommonAncestor(int v1, int v2){
+        return findLCA(this.root, v1, v2);
+    }
+
+    private int findLCA(Node root, int value1, int value2){ //Lowest common ancestor
+        if (root==null) return Integer.parseInt(null);
+        else if(value1 == root.value || value2 == root.value)
             return root.value;
-        else if((node1.value <= root.value && node2.value > root.value)
-                || (node2.value <= root.value && node1.value > root.value)){
+        else if((value1 <= root.value && value2 > root.value)
+                || (value2 <= root.value && value1 > root.value)){
             return root.value;
         }
-        else if(root.value > node1.value &&  root.value > node2.value){
-            return findLCA(root.left, node1, node2);
+        else if(root.value > value1 &&  root.value > value2){
+            if(root.left.value==value1 || root.left.value==value2)
+                return root.value;
+            else
+                return findLCA(root.left, value1, value2);
         }
         else {
-            return findLCA(root.right, node1, node2);
+            if(root.right.value==value1 || root.right.value==value2)
+                return root.value;
+            else
+                return findLCA(root.right, value1, value2);
         }
     }
 
     @Override
     void deleteNode(Node root, int value){
-        if(root==null)                   {}
-        else if(root.value==value)       {
+        if(root==null){}
+        else if(root.value==value){
             if(root.left==null && root.right==null)
                 this.root=null;
             else if(root.right==null)
@@ -92,42 +87,30 @@ class BinarySearchTree extends BinaryTree{
         }
     }
 
-    void getMaxValue(){
-        if(root==null) System.out.print("\nNo Node Available");
-        System.out.print("\nMax Value: "+MaxValue(root));
+    static int getMaxValue(BinaryTree bt){
+        if(bt.root==null) return Integer.parseInt(null);
+        return MaxValue(bt.root);
     }
 
-    private int MaxValue(Node root){
+    private static int MaxValue(Node root){
         if(root.right!=null){
             return (MaxValue(root.right));
         }
         return root.value;
     }
 
-    void getMinValue(){
-        if(root==null) System.out.print("\nNo Node Available");
-        System.out.print("\nMin Value: "+MinValue(root));
+    static int getMinValue(BinaryTree bt){
+        if(bt.root==null) return Integer.parseInt(null);
+         return MinValue(bt.root);
     }
 
-    private int MinValue(Node root){
+    private static int MinValue(Node root){
         if(root.left!=null){
             return (MinValue(root.left));
         }
         return root.value;
     }
 
-    boolean isBST() { //Binary Search Tree
-        return this.root != null &&
-                checkBST(this.root, MaxValue(this.root), MinValue(this.root));
-    }
-    private boolean checkBST(Node root,int max, int min){
-        if(root.value<min || root.value>max)
-            return false;
-        else{
-            if(root.right!=null) checkBST(root.right,MaxValue(root.right), MinValue(root.right));
-            if(root.left!=null) checkBST(root.left,MaxValue(root.left), MinValue(root.left));
-        }
-        return true;
-    }
+
 
 }
